@@ -7,12 +7,8 @@ const lista = document.getElementById("lista");
 enlace.addEventListener("click", function(){
     let login = new FormData(document.getElementById("formulario"));
 
-    fetch('http://fran.loc/compruebaDisponibilidadXML.php', {
+    fetch('http://franbl.loc/compruebaDisponibilidadXML.php', {
         method: 'POST',
-        //No funciona, y no consigo averigurar por que...
-        header: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
         body: login
     })
     .then(response => {
@@ -21,14 +17,7 @@ enlace.addEventListener("click", function(){
         }
         return Promise.reject(response);
     })
-    
-    fetch('http://fran.loc/compruebaDisponibilidadXML.php')
-    .then(response => {
-        if (response.ok) {
-            return response.text();
-        }
-        return Promise.reject(response);
-    })
+
     .then(datos =>{
         const parser = new DOMParser();
         const xml = parser.parseFromString(datos, "application/xml");

@@ -9,20 +9,8 @@ enlace.addEventListener("click", function(){
 
     fetch('http://fran.loc/compruebaDisponibilidadJSON.php', {
         method: 'POST',
-        //No funciona, y no consigo averigurar por que...
-        header: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
         body: login
     })
-    .then(response => {
-        if (response.ok) {
-            return response.text();
-        }
-        return Promise.reject(response);
-    })
-    
-    fetch('http://fran.loc/compruebaDisponibilidadJSON.php')
     .then(response => {
         if (response.ok) {
             return response.text();
